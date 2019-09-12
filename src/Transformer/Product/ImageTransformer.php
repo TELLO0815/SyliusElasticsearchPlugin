@@ -31,7 +31,7 @@ final class ImageTransformer implements TransformerInterface
 
     public function transform(ProductInterface $product): ?string
     {
-        $productThumbnails = $product->getImagesByType(self::SYLIUS_THUMBNAIL_TYPE);
+        $productThumbnails = $product->getImages();
 
         if ($productThumbnails->isEmpty()) {
             return null;
