@@ -31,7 +31,7 @@ final class ProductAttributeValueRepository implements ProductAttributeValueRepo
 
         return $queryBuilder
             ->where('o.attribute = :attribute')
-            ->groupBy('o.' . $productAttribute->getStorageType())
+//            ->groupBy('o.' . $productAttribute->getStorageType())
             ->setParameter(':attribute', $productAttribute)
             ->getQuery()
             ->getResult()
