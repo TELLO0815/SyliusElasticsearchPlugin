@@ -63,14 +63,18 @@ final class ListProductsByPartialNameAction
                 continue;
             }
 
-            $itemsResponse->addItem(new Item(
-                $productMainTaxon->getName(),
-                $product->getName(),
-                $product->getShortDescription(),
-                $this->productSlugTransformer->transform($product),
-                $this->productChannelPriceTransformer->transform($product),
-                $this->productImageTransformer->transform($product)
-            ));
+            if (null != $this->productChannelPriceTransformer->transform($product)) {
+
+                $itemsResponse->addItem(new Item(
+                    $productMainTaxon->getName(),
+                    $product->getName(),
+                    $product->getShortDescription(),
+                    $this->productSlugTransformer->transform($product),
+                    $this->productChannelPriceTransformer->transform($product),
+                    $this->productImageTransformer->transform($product)
+                ));
+
+            }
         }
 
         return JsonResponse::create($itemsResponse->toArray());
