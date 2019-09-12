@@ -38,11 +38,13 @@ final class PriceFilterType extends AbstractFilterType
                 'label' => 'bitbag_sylius_elasticsearch_plugin.ui.min_price',
                 'required' => false,
                 'currency' => $this->currencyContext->getCurrencyCode(),
+                'attr' => array('size' => '10'),
             ])
             ->add($this->priceNameResolver->resolveMaxPriceName(), MoneyType::class, [
                 'label' => 'bitbag_sylius_elasticsearch_plugin.ui.max_price',
                 'required' => false,
                 'currency' => $this->currencyContext->getCurrencyCode(),
+                'attr' => array('size' => '10'),
             ])
         ;
     }
