@@ -34,9 +34,9 @@
 
                                 response.results[taxonName].results.push({
                                     title: item.name,
-                                    description: item.description,
+                                    description: item.price,
                                     url: item.slug,
-                                    price: item.price,
+                                    // price: item.price,
                                     image: item.image
                                 });
                             });
