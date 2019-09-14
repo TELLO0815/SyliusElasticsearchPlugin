@@ -34,7 +34,8 @@ final class ChannelPricingTransformer implements TransformerInterface
         ChannelContextInterface $channelContext,
         ProductVariantResolverInterface $productVariantResolver,
         MoneyFormatterInterface $moneyFormatter
-    ) {
+    )
+    {
         $this->channelContext = $channelContext;
         $this->productVariantResolver = $productVariantResolver;
         $this->moneyFormatter = $moneyFormatter;
@@ -54,10 +55,16 @@ final class ChannelPricingTransformer implements TransformerInterface
 
         $productVariantPricing = $productVariant->getChannelPricingForChannel($channel);
 
+
         if (null === $productVariantPricing) {
             return null;
         }
 
-        return $this->moneyFormatter->format($productVariantPricing->getPrice(), $channelBaseCurrency->getCode());
+        if ($productVariantPricing->getPrice() > 0) {
+            return $this->moneyFormatter->format($productVariantPricing->getPrice(), $channelBaseCurrency->getCode());
+        } else {
+            return null;
+        }
+
     }
 }
